@@ -12,8 +12,18 @@ import "react-toastify/dist/ReactToastify.css";
 import { ProfileContextProvider } from "../modules/profile/context";
 import { OrderContextProvider } from "../modules/order/context";
 
+
+import {Sofia_Sans} from "@next/font/google"
+
+
+// const sofia = Sofia_Sans({
+//   subsets: ['latin'],
+//   variable: "--font-sofia"
+// })
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
+    // <main className={`${sofia.variable}`}>
     <SessionProvider>
       <ApolloProvider client={apolloClient}>
         <CartContextProvider>
@@ -41,5 +51,6 @@ export default function App({ Component, pageProps }: AppProps) {
         </CartContextProvider>
       </ApolloProvider>
     </SessionProvider>
+    // </main>
   );
 }

@@ -34,9 +34,9 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div className="w-full h-full relative overflow-y-scroll">
+    <div className="relative">
       {loading && (
-        <div className="w-full h-full flex items-center justify-center">
+        <div className="w-full h-96 flex items-center justify-center">
           <ApLoader />
         </div>
       )}

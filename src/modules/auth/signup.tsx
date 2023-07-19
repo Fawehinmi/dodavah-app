@@ -12,12 +12,16 @@ const FormSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-export const SignupPage = () => {
+interface IProps {
+  setPage: (page: "signIn" | "signUp") => void;
+  onDissmiss: () => void;
+}
+export const SignupPage: React.FC<IProps> = ({ setPage, onDissmiss }) => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
 
   const [signUp, {}] = useCreateSignUp((res: any) => {
-    router.replace("/signin");
+    onDissmiss();
   });
 
   const handleSubmit = async (values: any) => {
@@ -26,7 +30,7 @@ export const SignupPage = () => {
     signUp({ variables: { user: values } });
   };
   return (
-    <div className="w-screen h-screen">
+    <div>
       <div className="text-center my-3">
         <h3 className="font-semibold text-lg">Sign Up</h3>
       </div>
@@ -112,14 +116,20 @@ export const SignupPage = () => {
               </div>
 
               <div className={`flex justify-center my-2 items-center`}>
-                <a href="/signin" className="text-center">
-                  Already have an account? Sign in
-                </a>
+                <p className="text-center">
+                  Already have an account?
+                  <span
+                    onClick={() => setPage("signIn")}
+                    className="cursor-pointer text-blue-700 px-1"
+                  >
+                    Sign in
+                  </span>
+                </p>
               </div>
 
               <ApButton
                 className="w-full py-2 bg-rose-500 text-white rounded-lg my-2 hover:bg-rose-600 active:bg-rose-600 active:text-white focus:bg-rose-600"
-                name="Sign In"
+                name="Sign Up"
                 loading={loading}
                 htmlType="submit"
               />

@@ -33,9 +33,7 @@ export default function Product() {
 
   return (
     <MainLayout>
-      <TopNav/>
       <div className="h-[90vh] w-screen flex items-center justify-center">
-        
         {!loading && (
           <div className="text-center">
             <div className="flex mx-0 justify-center">
@@ -75,7 +73,7 @@ export async function getServerSideProps({ req }: { req: any }) {
   if (!session) {
     return {
       redirect: {
-        destination: "/signin",
+        destination: "/",
         permenant: false,
       },
     };

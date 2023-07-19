@@ -1,4 +1,5 @@
 import React from "react";
+import { LoadingOutlined } from "@ant-design/icons";
 
 interface IProps {
   name: string;
@@ -23,14 +24,17 @@ const ApButton: React.FC<IProps> = ({
 }) => {
   return (
     <button
-      // loading={loading}
       disabled={disabled || loading}
       type={htmlType}
       onClick={onClick}
       className={className}
       {...props}
     >
-      <span>{name}</span>
+      {loading ? (
+        <LoadingOutlined style={{ fontSize: 24 }} className="text-white" spin />
+      ) : (
+        <span>{name}</span>
+      )}
     </button>
   );
 };

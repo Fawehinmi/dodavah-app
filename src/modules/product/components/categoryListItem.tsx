@@ -9,7 +9,7 @@ interface IProps {
 
 const CategoryListItem: React.FC<IProps> = ({ category, onClick }) => {
   return (
-    <div className="flex items-center flex-col " onClick={() => onClick()}>
+    <div className="flex items-center flex-col " onClick={onClick}>
       <div className="h-10 w-10 rounded-full">
         <ApImage
           src={category?.image?.uri}

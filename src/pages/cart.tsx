@@ -1,9 +1,14 @@
 import { getSession } from "next-auth/react";
 import React from "react";
 import CartPage from "../modules/cart/page";
+import MainLayout from "../components/layout";
 
 export default function Product() {
-  return <CartPage />;
+  return (
+    <MainLayout>
+      <CartPage />
+    </MainLayout>
+  );
 }
 
 export async function getServerSideProps({ req }: { req: any }) {
@@ -12,7 +17,7 @@ export async function getServerSideProps({ req }: { req: any }) {
   if (!session) {
     return {
       redirect: {
-        destination: "/signin",
+        destination: "/",
         permenant: false,
       },
     };

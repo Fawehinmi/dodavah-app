@@ -60,7 +60,7 @@ export const ProductContextProvider: React.FC<IProps> = ({ children }) => {
         variables: {
           page: {
             ...page,
-            take: limit,
+            take: page?.take || limit,
           },
         },
       }).finally(() => {

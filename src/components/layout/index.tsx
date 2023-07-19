@@ -1,5 +1,5 @@
 import React from "react";
-import Navigations from "../navbar/navbar";
+import TopNav from "../navbar";
 
 interface IProps {
   children: React.ReactNode;
@@ -7,9 +7,10 @@ interface IProps {
 
 const MainLayout: React.FC<IProps> = ({ children }) => {
   return (
-    <div className="w-screen h-screen">
-      {children}
-      <Navigations />
+    <div className="">
+      <TopNav />
+
+      <div className="mt-14"> {children}</div>
     </div>
   );
 };

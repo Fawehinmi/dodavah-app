@@ -14,6 +14,7 @@ export interface IProductFilter {
   skip: number;
   keyword?: string;
   categoryId?: string;
+  take?: number
 }
 
 export interface IProductFiles {
