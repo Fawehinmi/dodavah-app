@@ -5,20 +5,22 @@ import { ICategory } from "../../category/model";
 interface IProps {
   category: ICategory;
   onClick: () => void;
+  selected: boolean;
 }
 
-const CategoryListItem: React.FC<IProps> = ({ category, onClick }) => {
+const CategoryListItem: React.FC<IProps> = ({
+  category,
+  onClick,
+  selected,
+}) => {
   return (
-    <div className="flex items-center flex-col " onClick={onClick}>
-      <div className="h-10 w-10 rounded-full">
-        <ApImage
-          src={category?.image?.uri}
-          alt="Category Image"
-          className="full-image object-cover rounded-full"
-        />
-      </div>
-
-      <p className="text-sm font-semibold mt-1">{category.name}</p>
+    <div
+      className={`flex items-center flex-col  rounded-lg cursor-pointer ${
+        selected === true ? "bg-rose-500 text-white" : "bg-gray-100"
+      }`}
+      onClick={onClick}
+    >
+      <p className="text-sm font-semibold py-1 rounded-lg">{category.name}</p>
     </div>
   );
 };

@@ -48,105 +48,95 @@ const ProductsPage = () => {
 
       {!modal.open ? (
         <>
-          <>
-            <>
-              <div className="flex">
-                <div className="w-3/12 py-2 text-lg font-semibold  px-3">
-                  <div className="text-center">Filters</div>
-                  <ApSearchInput
-                    placeholder="What are you looking for?"
-                    className="border px-4 text-xs mb-3 mt-1 py-2 w-full hover:border-none hover:outline-none focus:outline-none bg-slate-100 "
-                    onSearchChange={(val) =>
-                      setFilter({ ...filter, keyword: val })
-                    }
-                  />
-                  <div className=" px-2">
-                    <p className="pb-3  font-semibold">Categories</p>
+          <div className="flex bg-gray-100">
+            <div className="w-2/12 py-2 text-lg font-semibold bg-white mt-1  px-2 hidden lg:block">
+              <p className="bold text-xl font-montserrat">Filter Product</p>
+              {/* <ApSearchInput
+                placeholder="What are you looking for?"
+                className="border px-4 text-xs mb-3 mt-1 py-2 w-full hover:border-none hover:outline-none focus:outline-none bg-slate-100 "
+                onSearchChange={(val) => setFilter({ ...filter, keyword: val })}
+              /> */}
+              <div className="mt-3">
+                <p className="pb-1 font-semibold">Category</p>
 
-                    <div className="grid grid-cols-3  gap-3 mb-2">
-                      <div
-                        className="flex items-center flex-col "
-                        onClick={() => setFilter({ ...filter, categoryId: "" })}
-                      >
-                        <div className="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center"></div>
-
-                        <p className="text-sm font-semibold mt-1">All</p>
-                      </div>
-
-                      {categories.map((c) => (
-                        <CategoryListItem
-                          category={c}
-                          key={c._id}
-                          onClick={() =>
-                            setFilter({ ...filter, categoryId: c._id })
-                          }
-                        />
-                      ))}
-                    </div>
+                <div className="grid grid-cols-2  gap-1">
+                  <div className="flex items-center flex-col bg-gray-100 rounded-lg text-dark">
+                    <p className="text-sm font-semibold py-1 ">All</p>
                   </div>
-                  {/* <div className="flex justify-center">
+
+                  {categories.map((c) => (
+                    <CategoryListItem
+                      category={c}
+                      key={c._id}
+                      onClick={() =>
+                        setFilter({ ...filter, categoryId: c._id })
+                      }
+                      selected={true}
+                    />
+                  ))}
+                </div>
+              </div>
+              {/* <div className="flex justify-center">
                     <ApButton
                       className="bg-rose-500 text-white px-2 text-base py-1 rounded-sm"
                       name="Apply filters"
                       onClick={() => fetchProductPage({ ...filter })}
                     />
                   </div> */}
+            </div>
+            <div className="w-full lg:w-10/12 h-screen py-2 px-2">
+              {loading ? (
+                <div className="w-full h-96 flex items-center justify-center">
+                  <ApLoader />
                 </div>
-                <div className="w-9/12 h-screen py-2 px-2">
-                  {loading ? (
-                    <div className="w-full h-96 flex items-center justify-center">
-                      <ApLoader />
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-4 gap-2 px-2">
-                      {products.map((p) => (
-                        <ProductListItem
-                          product={p}
-                          key={p._id}
-                          onViewDetail={() => setModal({ open: true, data: p })}
-                        />
-                      ))}
-                      {products.map((p) => (
-                        <ProductListItem
-                          product={p}
-                          key={p._id}
-                          onViewDetail={() => setModal({ open: true, data: p })}
-                        />
-                      ))}
-                      {products.map((p) => (
-                        <ProductListItem
-                          product={p}
-                          key={p._id}
-                          onViewDetail={() => setModal({ open: true, data: p })}
-                        />
-                      ))}
-                      {products.map((p) => (
-                        <ProductListItem
-                          product={p}
-                          key={p._id}
-                          onViewDetail={() => setModal({ open: true, data: p })}
-                        />
-                      ))}
-                      {products.map((p) => (
-                        <ProductListItem
-                          product={p}
-                          key={p._id}
-                          onViewDetail={() => setModal({ open: true, data: p })}
-                        />
-                      ))}
-                      {products.map((p) => (
-                        <ProductListItem
-                          product={p}
-                          key={p._id}
-                          onViewDetail={() => setModal({ open: true, data: p })}
-                        />
-                      ))}
-                    </div>
-                  )}
+              ) : (
+                <div className="grid grid-cols-4 gap-2 px-2">
+                  {products.map((p) => (
+                    <ProductListItem
+                      product={p}
+                      key={p._id}
+                      onViewDetail={() => setModal({ open: true, data: p })}
+                    />
+                  ))}
+                  {products.map((p) => (
+                    <ProductListItem
+                      product={p}
+                      key={p._id}
+                      onViewDetail={() => setModal({ open: true, data: p })}
+                    />
+                  ))}
+                  {products.map((p) => (
+                    <ProductListItem
+                      product={p}
+                      key={p._id}
+                      onViewDetail={() => setModal({ open: true, data: p })}
+                    />
+                  ))}
+                  {products.map((p) => (
+                    <ProductListItem
+                      product={p}
+                      key={p._id}
+                      onViewDetail={() => setModal({ open: true, data: p })}
+                    />
+                  ))}
+                  {products.map((p) => (
+                    <ProductListItem
+                      product={p}
+                      key={p._id}
+                      onViewDetail={() => setModal({ open: true, data: p })}
+                    />
+                  ))}
+                  {products.map((p) => (
+                    <ProductListItem
+                      product={p}
+                      key={p._id}
+                      onViewDetail={() => setModal({ open: true, data: p })}
+                    />
+                  ))}
                 </div>
-              </div>
-            </>
-          </>
+              )}
+            </div>
+          </div>
         </>
       ) : (
         <ProductDetail

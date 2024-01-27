@@ -7,7 +7,7 @@ import ProductsPage from "../../modules/product/page";
 
 export default function Product() {
   return (
-    <MainLayout>
+    <MainLayout notScrollable>
       <ProductsPage />
     </MainLayout>
   );

@@ -28,6 +28,7 @@ const ApAuthRequired: React.FC<IProps> = ({ children }) => {
       <div>{children}</div>
 
       <ApModal
+        zIndex={100000}
         className="my-14"
         open={showModal.show}
         onDismiss={() => {

@@ -16,8 +16,13 @@ const CartPage = () => {
     fetchCartPage();
   }, []);
   return (
-    <div className="">
-      <p className="font-semibold text-center text-lg">Cart</p>
+    <div className="px-3 py-3">
+      <p className="font-semibold text-lg">
+        Cart{" "}
+        <span className="px-2 text-sm text-gray-300">
+          ({cart.items.length} products)
+        </span>
+      </p>
 
       {loading ? (
         <div className="w-full h-96 flex items-center justify-center">
@@ -25,7 +30,7 @@ const CartPage = () => {
         </div>
       ) : (
         <div>
-          <div className="px-3">
+          <div className="">
             <div>
               {cart.items.map((item, i) => (
                 <CartListItem
